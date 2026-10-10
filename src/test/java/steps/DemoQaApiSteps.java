@@ -62,11 +62,13 @@ public class DemoQaApiSteps {
     }
 
     @Quando("faço o aluguel dos livros através do isbn")
-    public void alugarLivros(List<Map<String, String>> tabela) {
+    public void alugarLivros() {
+        assertTrue(livros != null && livros.size() >= 2, "Não existem pelo menos dois livros disponíveis.");
+
         List<String> itens = new ArrayList<>();
-        for (Map<String, String> linha : tabela) {
-            String isbn = linha.get("isbn");
-            assertTrue(livros.contains((isbn)), "O livro com ISBN" + isbn + "não está disponível para aluguel.");
+        for (int i = 0; i < 2; i++) {
+            String isbn = livros.get(i);
+
             itens.add("{\"isbn\": \"" + isbn + "\"}");
             livrosAlugados.add(isbn);
         }
@@ -83,13 +85,12 @@ public class DemoQaApiSteps {
     public void validarAluguel() {
         response = given().contentType("application/json").header("Authorization", "Bearer " + token).get(url + "/Account/v1/User/" + userId);
 
-        System.out.println("Detalhes do usuario com livros escolhidos: " + response.asString());
-
         assertEquals(200, response.getStatusCode());
         List<String> livrosDoUsuario = response.jsonPath().getList("books.isbn");
         assertEquals(livrosAlugados.size(), livrosDoUsuario.size());
         assertTrue(livrosDoUsuario.containsAll(livrosAlugados));
 
+        response.prettyPrint();
 
     }
 
