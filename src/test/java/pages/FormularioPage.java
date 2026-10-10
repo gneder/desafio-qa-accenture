@@ -13,20 +13,20 @@ public class FormularioPage {
     Random random = new Random();
     Keys ctrl = Platform.getCurrent().is(Platform.MAC) ? Keys.COMMAND : Keys.CONTROL;
 
-    public void preencherFormulario() {
+    public String preencherFormulario() {
+        String email = faker.internet().emailAddress();
         driver.findElement(By.id("firstName")).sendKeys(faker.name().firstName());
         driver.findElement(By.id("lastName")).sendKeys(faker.name().lastName());
-        driver.findElement(By.id("userEmail")).sendKeys(faker.internet().emailAddress());
+        driver.findElement(By.id("userEmail")).sendKeys(email);
         String[] generos = {"Male", "Female", "Other"};
         driver.findElement(By.xpath("//label[text()='" + generos[random.nextInt(3)] + "']")).click();
         driver.findElement(By.id("userNumber")).sendKeys(faker.number().digits(10));
 
         WebElement data = driver.findElement(By.id("dateOfBirthInput"));
         data.sendKeys(Keys.chord(ctrl, "a"));
-        data.sendKeys("11 Fev 1988");
+        data.sendKeys("11 Feb 1988");
         data.sendKeys(Keys.ENTER);
 
-//        driver.findElement(By.id("subjectsInput")).sendKeys("Maths", Keys.ENTER);
         String [] hobbies = {"1", "2", "3"};
         driver.findElement(By.id("hobbies-checkbox-" + hobbies[random.nextInt(3)] + "")).click();
 
@@ -36,6 +36,7 @@ public class FormularioPage {
         driver.findElement(By.id("react-select-3-input")).sendKeys("NCR", Keys.ENTER);
         driver.findElement(By.id("react-select-4-input")).sendKeys("Delhi", Keys.ENTER);
 
+        return email;
     }
 
     public void enviarFormulario() {
@@ -45,6 +46,10 @@ public class FormularioPage {
 
     public String tituloDoPopip() {
         return driver.findElement(By.id("example-modal-sizes-title-lg")).getText();
+    }
+
+    public String textoDoPopup() {
+        return driver.findElement(By.className("modal-body")).getText();
     }
 
     public void fecharPopip() {

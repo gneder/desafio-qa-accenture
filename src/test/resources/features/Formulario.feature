@@ -8,4 +8,5 @@
     Quando preencho o formulario com dados aleatorios
     E envio o formulario
     Entao deve aparecer o poopup de confirmacao
+    E o popup deve mostrar os dados preenchidos
     E fecho o popup
