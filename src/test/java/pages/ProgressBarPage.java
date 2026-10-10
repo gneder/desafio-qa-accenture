@@ -20,7 +20,7 @@ public class ProgressBarPage {
 
     public void iniciarPararAntesDe25() throws InterruptedException {
         driver.findElement(botaoStartStop).click();
-        while (valorDaBarra() < 20) {
+        while (valorDaBarra() < 18) {
             Thread.sleep(50);
         }
         driver.findElement(botaoStartStop).click();
