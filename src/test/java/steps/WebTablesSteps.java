@@ -25,7 +25,7 @@ public class WebTablesSteps {
     @E("edito o registro criado")
     public void editarRegistro() {
         tabela.editarIdade(email, "30");
-        assertTrue(tabela.linhaDoRegistro(email).contains("30"));
+        assertEquals("30", tabela.idadeDoRegistro(email));
     }
 
     @E("deleto o registro criado")

@@ -24,7 +24,7 @@ public class WebTablesPage {
        driver.findElement(By.id("firstName")).sendKeys(faker.name().firstName());
        driver.findElement(By.id("lastName")).sendKeys(faker.name().lastName());
        driver.findElement(By.id("userEmail")).sendKeys(email);
-       driver.findElement(By.id("age")).sendKeys(String.valueOf(faker.number().numberBetween(18, 60)));
+       driver.findElement(By.id("age")).sendKeys(String.valueOf(faker.number().numberBetween(18, 30)));
        driver.findElement(By.id("salary")).sendKeys(String.valueOf(faker.number().numberBetween(1000, 9000 )));
        driver.findElement(By.id("department")).sendKeys("QA");
        driver.findElement(By.id("submit")).click();
@@ -48,8 +48,8 @@ public class WebTablesPage {
         return driver.getPageSource().contains(email);
     }
 
-    public String linhaDoRegistro(String email) {
-        return driver.findElement(By.xpath("//td[text()='" + email + "']/..")).getText();
+    public String idadeDoRegistro(String email) {
+        return driver.findElement(By.xpath("//td[text()='" + email + "']/../td[3]")).getText();
     }
 
     public void mostrarMaisLinhas() {
