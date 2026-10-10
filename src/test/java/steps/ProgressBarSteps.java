@@ -13,7 +13,7 @@ public class ProgressBarSteps {
     ProgressBarPage barra = new ProgressBarPage();
 
     @Quando("inicio a barra e paro antes de 25%")
-    public void pararAntesDe25() throws InterruptedException {
+    public void pararAntesDe25() {
         barra.iniciarPararAntesDe25();
     }
 

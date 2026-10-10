@@ -18,11 +18,9 @@ public class ProgressBarPage {
         return Integer.parseInt(valor);
     }
 
-    public void iniciarPararAntesDe25() throws InterruptedException {
+    public void iniciarPararAntesDe25() {
         driver.findElement(botaoStartStop).click();
-        while (valorDaBarra() < 18) {
-            Thread.sleep(50);
-        }
+        new WebDriverWait(driver, Duration.ofSeconds(10)).pollingEvery(Duration.ofMillis(50)).until(d -> valorDaBarra() >= 18);
         driver.findElement(botaoStartStop).click();
     }
 
