@@ -31,7 +31,7 @@ public class FormularioSteps {
     @E("o popup deve mostrar os dados preenchidos")
     public void validarDadosPopup() {
         assertTrue(formulario.textoDoPopup().contains(email));
-        assertTrue(formulario.textoDoPopup().contains("11 February,1988"));
+        assertTrue(formulario.textoDoPopup().contains(formulario.dataNoPopup()));
     }
 
     @E("fecho o popup")
