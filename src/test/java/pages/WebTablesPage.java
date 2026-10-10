@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.Driver;
 
 import java.time.Duration;
+import java.util.List;
 
 public class WebTablesPage {
 
@@ -43,10 +44,6 @@ public class WebTablesPage {
         driver.findElement(By.id("submit")).click();
     }
 
-    public void deletar(String email) {
-        driver.findElement(By.xpath("//td[text()='" + email + "']/..//span[@title='Delete']")).click();
-    }
-
     public boolean registroExiste(String email) {
         return driver.getPageSource().contains(email);
     }
@@ -56,7 +53,15 @@ public class WebTablesPage {
     }
 
     public void mostrarMaisLinhas() {
-        new Select(driver.findElement(By.cssSelector("select[aria-label='rows per page']"))).selectByValue("50");
+        new Select(driver.findElement(By.cssSelector(".pagination select"))).selectByValue("50");
+    }
+
+    // excluir um registro adicionado remove todos os outros adicionados(bug) e por isso só clica se a linha existir
+    public void deletar(String email) {
+        List<WebElement> botoes = driver.findElements(By.xpath("//td[text()='" + email + "']/..//span[@title='Delete']"));
+        if (!botoes.isEmpty()) {
+            botoes.get(0).click();
+        }
     }
 
 }

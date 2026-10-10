@@ -11,3 +11,16 @@
       E edito o registro criado
       E deleto o registro criado
       Então o registro não deve aparecer na tabela
+
+    # bug ao excluir registros, ver o cenário @bug_encontrado
+    Cenário: Criar e deletar 12 registros
+      Quando crio 12 registros
+      Então os 12 registros devem aparecer na tabela
+      Quando deleto todos os registros criados
+      Então nenhum registro criado deve aparecer na tabela
+
+    @bug @bug_encontrado
+    Cenário: Exluir um registro não deve afetar os demais
+      Quando crio 3 registros
+      E deleto apenas o primeiro registro criado
+      Então os outros 2 registros devem continuar na tabela
