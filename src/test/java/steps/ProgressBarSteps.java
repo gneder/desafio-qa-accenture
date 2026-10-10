@@ -20,7 +20,7 @@ public class ProgressBarSteps {
     @Então("o valor da barra deve ser menor ou igual a 25")
     public void validarMenorDe25() {
         int valor = barra.valorDaBarra();
-        assertTrue(valor <= 25, "A barra parou em" + valor);
+        assertTrue(valor <= 25, "A barra parou em " + valor);
 
     }
 

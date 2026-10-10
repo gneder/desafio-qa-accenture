@@ -50,7 +50,7 @@ public class WebTablesSteps {
     public void validarRegistros(int quantidade) {
         assertEquals(quantidade, emails.size());
         for (String e : emails) {
-            assertTrue(tabela.registroExiste(e), "Não achei o registro:" + e);
+            assertTrue(tabela.registroExiste(e), "Não achei o registro: " + e);
         }
     }
 
@@ -79,7 +79,7 @@ public class WebTablesSteps {
         List<String> outros = emails.subList(1, emails.size());
         assertEquals(quantidade, outros.size());
         for (String e : outros) {
-            assertTrue(tabela.registroExiste(e), "Registro sumiu indevidamente:" + e);
+            assertTrue(tabela.registroExiste(e), "Registro sumiu indevidamente: " + e);
         }
     }
 }

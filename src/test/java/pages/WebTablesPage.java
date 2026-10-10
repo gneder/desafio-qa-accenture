@@ -16,7 +16,7 @@ public class WebTablesPage {
     Faker faker = new Faker();
     Keys ctrl = Platform.getCurrent().is(Platform.MAC) ? Keys.COMMAND : Keys.CONTROL;
 
-    // cria um registro e devolve o registro criaro
+    // cria um registro e devolve o registro criado
     public String criarRegistro() {
        String email = faker.internet().emailAddress();
 
@@ -32,7 +32,7 @@ public class WebTablesPage {
        return email;
     }
 
-    public void editarIdade(String email, String notaIdade) {
+    public void editarIdade(String email, String novaIdade) {
         String xpath = String.format("//tr[td[text()='%s']]//span[starts-with(@id,'edit-record')]", email);
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -40,7 +40,7 @@ public class WebTablesPage {
         editar.click();
 
         driver.findElement(By.id("age")).sendKeys(Keys.chord(ctrl, "a"));
-        driver.findElement(By.id("age")).sendKeys(notaIdade);
+        driver.findElement(By.id("age")).sendKeys(novaIdade);
         driver.findElement(By.id("submit")).click();
     }
 

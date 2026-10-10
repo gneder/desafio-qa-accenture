@@ -23,9 +23,9 @@ public class FormularioSteps {
         formulario.enviarFormulario();
     }
 
-    @Entao("deve aparecer o poopup de confirmacao")
+    @Entao("deve aparecer o popup de confirmacao")
     public void validarPopupConfirmacao() {
-        assertEquals("Thanks for submitting the form", formulario.tituloDoPopip());
+        assertEquals("Thanks for submitting the form", formulario.tituloDoPopup());
     }
 
     @E("o popup deve mostrar os dados preenchidos")
@@ -36,6 +36,6 @@ public class FormularioSteps {
 
     @E("fecho o popup")
     public void fecharPopup() {
-        formulario.fecharPopip();
+        formulario.fecharPopup();
     }
 }

@@ -7,6 +7,6 @@
     E clico no submenu "Practice Form"
     Quando preencho o formulario com dados aleatorios
     E envio o formulario
-    Entao deve aparecer o poopup de confirmacao
+    Entao deve aparecer o popup de confirmacao
     E o popup deve mostrar os dados preenchidos
     E fecho o popup

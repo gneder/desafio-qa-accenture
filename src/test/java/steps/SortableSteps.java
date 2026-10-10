@@ -22,7 +22,7 @@ public class SortableSteps {
     }
 
     @Quando("arrasto os itens para a ordem crescente")
-    public void ordernarCrescente() {
+    public void ordenarCrescente() {
         sortable.ordenar(crescente);
     }
 

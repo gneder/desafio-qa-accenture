@@ -56,7 +56,7 @@ public class FormularioPage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", botao);
     }
 
-    public String tituloDoPopip() {
+    public String tituloDoPopup() {
         return driver.findElement(By.id("example-modal-sizes-title-lg")).getText();
     }
 
@@ -68,7 +68,7 @@ public class FormularioPage {
         return nascimento.format(DateTimeFormatter.ofPattern("dd MMMM,yyyy", Locale.ENGLISH));
     }
 
-    public void fecharPopip() {
+    public void fecharPopup() {
         WebElement fechar = driver.findElement(By.id("closeLargeModal"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", fechar);
     }

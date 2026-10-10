@@ -20,7 +20,7 @@
       Então nenhum registro criado deve aparecer na tabela
 
     @bug @bug_encontrado
-    Cenário: Exluir um registro não deve afetar os demais
+    Cenário: Excluir um registro não deve afetar os demais
       Quando crio 3 registros
       E deleto apenas o primeiro registro criado
       Então os outros 2 registros devem continuar na tabela

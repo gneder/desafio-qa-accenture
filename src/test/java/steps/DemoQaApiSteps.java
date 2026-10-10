@@ -31,7 +31,7 @@ public class DemoQaApiSteps {
 
         response = given().contentType("application/json").body(credenciais()).when().post(url + "/Account/v1/User");
 
-        assertEquals(201, response.getStatusCode(), "Erro ao criar usuário:" + response.asString());
+        assertEquals(201, response.getStatusCode(), "Erro ao criar usuário: " + response.asString());
         userId = response.jsonPath().getString("userID");
 
     }
