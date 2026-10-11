@@ -66,4 +66,3 @@ Vi essas coisas mas preferi não mexer agora:
 - o `registroExiste` da Web Tables procura no `getPageSource()` inteiro, dava pra buscar direto na linha da tabela
 - headless + CI no GitHub Actions
 - outros navegadores
-- trocar `@SelectClasspathResource` por `@SelectPackages` no runner (tira um warning do JUnit)
