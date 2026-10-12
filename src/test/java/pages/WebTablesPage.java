@@ -2,17 +2,12 @@ package pages;
 
 import net.datafaker.Faker;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.Driver;
 
-import java.time.Duration;
 import java.util.List;
 
-public class WebTablesPage {
+public class WebTablesPage extends BasePage {
 
-    WebDriver driver = Driver.getDriver();
     Faker faker = new Faker();
     Keys ctrl = Platform.getCurrent().is(Platform.MAC) ? Keys.COMMAND : Keys.CONTROL;
 
@@ -20,14 +15,14 @@ public class WebTablesPage {
     public String criarRegistro() {
        String email = faker.internet().emailAddress();
 
-       driver.findElement(By.id("addNewRecordButton")).click();
-       driver.findElement(By.id("firstName")).sendKeys(faker.name().firstName());
-       driver.findElement(By.id("lastName")).sendKeys(faker.name().lastName());
-       driver.findElement(By.id("userEmail")).sendKeys(email);
-       driver.findElement(By.id("age")).sendKeys(String.valueOf(faker.number().numberBetween(18, 30)));
-       driver.findElement(By.id("salary")).sendKeys(String.valueOf(faker.number().numberBetween(1000, 9000 )));
-       driver.findElement(By.id("department")).sendKeys("QA");
-       driver.findElement(By.id("submit")).click();
+       elemento(By.id("addNewRecordButton")).click();
+       elemento(By.id("firstName")).sendKeys(faker.name().firstName());
+       elemento(By.id("lastName")).sendKeys(faker.name().lastName());
+       elemento(By.id("userEmail")).sendKeys(email);
+       elemento(By.id("age")).sendKeys(String.valueOf(faker.number().numberBetween(18, 30)));
+       elemento(By.id("salary")).sendKeys(String.valueOf(faker.number().numberBetween(1000, 9000 )));
+       elemento(By.id("department")).sendKeys("QA");
+       elemento(By.id("submit")).click();
 
        return email;
     }
@@ -35,13 +30,11 @@ public class WebTablesPage {
     public void editarIdade(String email, String novaIdade) {
         String xpath = String.format("//tr[td[text()='%s']]//span[starts-with(@id,'edit-record')]", email);
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement editar = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
-        editar.click();
+        clicavel(By.xpath(xpath)).click();
 
-        driver.findElement(By.id("age")).sendKeys(Keys.chord(ctrl, "a"));
-        driver.findElement(By.id("age")).sendKeys(novaIdade);
-        driver.findElement(By.id("submit")).click();
+        elemento(By.id("age")).sendKeys(Keys.chord(ctrl, "a"));
+        elemento(By.id("age")).sendKeys(novaIdade);
+        elemento(By.id("submit")).click();
     }
 
     public boolean registroExiste(String email) {
@@ -49,11 +42,11 @@ public class WebTablesPage {
     }
 
     public String idadeDoRegistro(String email) {
-        return driver.findElement(By.xpath("//td[text()='" + email + "']/../td[3]")).getText();
+        return elemento(By.xpath("//td[text()='" + email + "']/../td[3]")).getText();
     }
 
     public void mostrarMaisLinhas() {
-        new Select(driver.findElement(By.cssSelector(".pagination select"))).selectByValue("50");
+        new Select(elemento(By.cssSelector(".pagination select"))).selectByValue("50");
     }
 
     // excluir um registro adicionado remove todos os outros adicionados(bug) e por isso só clica se a linha existir

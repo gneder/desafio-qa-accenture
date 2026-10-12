@@ -1,23 +1,20 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import utils.Driver;
 
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SortablePage {
+public class SortablePage extends BasePage {
 
-    WebDriver driver = Driver.getDriver();
     By itens = By.cssSelector("#demo-tabpane-list .list-group-item");
 
     public List<String> ordemAtual() {
         List<String> textos = new ArrayList<>();
-        for (WebElement item : driver.findElements(itens)) {
+        for (WebElement item : elementos(itens)) {
             textos.add(item.getText());
         }
         return textos;
@@ -25,7 +22,7 @@ public class SortablePage {
 
     public void ordenar(List<String> ordemDesejada) {
         for (int i = 0; i < ordemDesejada.size(); i++) {
-            List<WebElement> lista = driver.findElements(itens);
+            List<WebElement> lista = elementos(itens);
 
             // acha o item que deveria estar na posição i
             WebElement item = null;

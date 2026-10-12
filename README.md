@@ -62,7 +62,6 @@ Pra não deixar o teste quebrando por causa do site, o `deletar` só clica se a 
 Vi essas coisas mas preferi não mexer agora:
 
 - seletores declarados no topo das pages, e não dentro dos métodos
-- estou misturando implicit wait (no `Driver`) com `WebDriverWait` em algumas pages. O ideal é usar um só
 - o `registroExiste` da Web Tables procura no `getPageSource()` inteiro, dava pra buscar direto na linha da tabela
 - headless + CI no GitHub Actions
 - outros navegadores
